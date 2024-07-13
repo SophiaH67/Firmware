@@ -135,7 +135,7 @@ const PinPatternManager::State kWebSocketConnectedPattern[] = {
 };
 const RGBPatternManager::RGBState kWebSocketConnectedRGBPattern[] = {
   {0, 255, 0,    100},
-  {0,   0, 0, 10'000},
+  {0,   0, 0, 2147483646}, // SINT32_MAX (2^31 - 1)
 };
 
 const PinPatternManager::State kSolidOnPattern[] = {
