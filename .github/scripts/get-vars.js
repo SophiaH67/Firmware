@@ -58,13 +58,7 @@ const releasesArray = gitTagsArray.map(convertGitTagToSemver);
 const latestRelease = isGitTag ? convertGitTagToSemver(gitRef.split('/')[2]) : releasesArray[0];
 
 function isStableRelease(release) {
-  return release.prerelease.length === 0 || release.prerelease[0] === 'stable';
-}
-function isBetaRelease(release) {
-  return release.prerelease.length > 0 && ['rc', 'beta'].includes(release.prerelease[0]);
-}
-function isDevRelease(release) {
-  return release.prerelease.length > 0 && ['dev', 'develop'].includes(release.prerelease[0]);
+  return true;
 }
 
 const stableReleasesArray = releasesArray.filter(isStableRelease);
