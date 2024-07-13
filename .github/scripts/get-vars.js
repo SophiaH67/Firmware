@@ -4,6 +4,8 @@ const semver = require('semver');
 const core = require('@actions/core');
 const child_process = require('child_process');
 
+core.setFailed = console.error;
+
 // Get branch name
 const gitRef = process.env.GITHUB_REF;
 if (gitRef === undefined) {
