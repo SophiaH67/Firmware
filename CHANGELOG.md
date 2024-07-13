@@ -20,6 +20,10 @@ This is the first release candidate for version 1.2.0.
 - Start utilizing StringView more to reduce memory and CPU usage.
 - Small code cleanup and refactoring.
 
+# Version 1.1.3 Release Notes
+
+I HATE THIS STUPID BLUE LED LET ME SLEEP
+
 # Version 1.1.2 Release Notes
 
 - Add support for OpenShock Core V2 Hardware
