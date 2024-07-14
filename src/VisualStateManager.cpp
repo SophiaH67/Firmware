@@ -185,65 +185,9 @@ void _updateVisualStateGPIO() {
   s_builtInLedManager->SetPattern(kWiFiDisconnectedPattern);
 }
 
-void _updateVisualStateRGB() {
-  if (s_stateFlags & kCriticalErrorFlag) {
-    s_RGBLedManager->SetPattern(kCriticalErrorRGBPattern);
-    return;
-  }
-
-  if (s_stateFlags & kEmergencyStoppedFlag) {
-    s_RGBLedManager->SetPattern(kEmergencyStoppedRGBPattern);
-    return;
-  }
-
-  if (s_stateFlags & kEmergencyStopClearedFlag) {
-    s_RGBLedManager->SetPattern(kEmergencyStopClearedRGBPattern);
-    return;
-  }
-
-  if (s_stateFlags & kWebSocketConnectedFlag) {
-    s_RGBLedManager->SetPattern(kWebSocketConnectedRGBPattern);
-    return;
-  }
-
-  if (s_stateFlags & kWiFiConnectedFlag) {
-    s_RGBLedManager->SetPattern(kWiFiConnectedWithoutWSRGBPattern);
-    return;
-  }
-
-  if (s_stateFlags & kWiFiScanningFlag) {
-    s_RGBLedManager->SetPattern(kPingNoResponseRGBPattern);
-    return;
-  }
-
-  s_RGBLedManager->SetPattern(kWiFiDisconnectedRGBPattern);
-}
+void _updateVisualStateRGB() {}
 
 void _updateVisualState() {
-  bool gpioActive = s_builtInLedManager != nullptr;
-  bool rgbActive = s_RGBLedManager != nullptr;
-
-  if (gpioActive && rgbActive) {
-    if (s_stateFlags == kStatusOKMask) {
-      _updateVisualStateGPIO(kSolidOnPattern);
-    } else {
-      _updateVisualStateGPIO(kSolidOffPattern);
-    }
-    _updateVisualStateRGB();
-    return;
-  }
-
-  if (gpioActive) {
-    _updateVisualStateGPIO();
-    return;
-  }
-
-  if (rgbActive) {
-    _updateVisualStateRGB();
-    return;
-  }
-
-  ESP_LOGW(TAG, "Trying to update visual state, but no LED is active!");
 }
 
 void _handleWiFiConnected(arduino_event_t* event) {
